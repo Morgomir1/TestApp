@@ -23,11 +23,6 @@ public class DatabaseLoader {
     public static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
 
     @Bean
-    public EmployeeService employeeBean() {
-        return new EmployeeService();
-    }
-
-    @Bean
     CommandLineRunner initDatabase(EmployeeRepository repository) {
         Random random = new Random();
         random.setSeed(123L);
