@@ -2,18 +2,14 @@ package testapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.shell.Bootstrap;
-import org.springframework.shell.core.JLineShellComponent;
 import testapp.config.DatabaseLoader;
 import testapp.service.EmployeeService;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Scanner;
