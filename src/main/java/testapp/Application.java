@@ -16,14 +16,15 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class Application {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testapp", "root", "root");
             if (con != null) {
-                System.out.println("Connected");
+                System.out.println("Успешное подключение к базе данных!\n");
             } else {
-                System.out.println("Not Connected");
+                System.out.println("Не удалось подключиться к базе данных.\n");
                 return;
             }
             EmployeeService employeeService = new EmployeeService();
@@ -48,17 +49,13 @@ public class Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     private enum Action {
         FIND_BY_ID("Найти по сотрудника по id"),
         GROUP_BY_NAME("Сгруппировать всех сотрудников"),
         FIND_BETWEEN("Найти сотрудников с датой рождения между выбранными датами"),
-        EXIT("Завершить программу"),
-        ;
+        EXIT("Завершить программу");
 
         String actionText;
 
@@ -76,7 +73,7 @@ public class Application {
                 return false;
             }
             if (this == FIND_BY_ID) {
-                int id = -1;
+                int id;
                 System.out.println("Ввведите id: \n");
                 try {
                     id = Integer.parseInt(scanner.nextLine());
