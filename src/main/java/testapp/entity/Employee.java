@@ -2,6 +2,9 @@ package testapp.entity;
 
 import jakarta.persistence.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,18 +12,33 @@ import java.time.LocalDateTime;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
+    @Column
     private String name;
+    @Column
     private String surname;
-    private LocalDateTime birthDate;
+    @Column
+    private LocalDate birthDate;
+    @Column
     private String department;
+    @Column
     private int salary;
 
     public Employee() {
     }
 
-    public Employee(int id, String name, String surname, LocalDateTime birthDate, String department, int salary) {
+    public Employee(ResultSet set) throws SQLException {
+        this.id = set.getInt("id");
+        this.name = set.getString("name");
+        this.surname = set.getString("surname");
+        this.birthDate = set.getDate("birth_date").toLocalDate();
+        this.department = set.getString("department");
+        this.salary = set.getInt("salary");
+    }
+
+    public Employee(int id, String name, String surname, LocalDate birthDate, String department, int salary) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -53,11 +71,11 @@ public class Employee {
         this.surname = surname;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
