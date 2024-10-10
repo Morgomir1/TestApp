@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+/*
+ * Задание 1.
+ */
 
 @Entity
 @Table(name = "employee")

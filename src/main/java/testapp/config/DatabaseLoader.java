@@ -14,6 +14,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/*
+ * Задание 1.
+ */
 
 @Configuration
 public class DatabaseLoader {
