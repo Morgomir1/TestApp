@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import testapp.config.DatabaseLoader;
 import testapp.entity.Employee;
+import testapp.exception.EmployeeNotFoundException;
 import testapp.service.EmployeeService;
 
 import java.sql.SQLException;
@@ -79,8 +80,12 @@ public class Application {
                     System.out.println("Нужно ввести число > 1!");
                     return true;
                 }
-                Employee employee = service.findById(id);
-                System.out.println(employee == null ? "Сотрудника с таким id не существует!" : employee);;
+                try {
+                    Employee employee = service.findById(id);
+                    System.out.println(employee);
+                } catch (EmployeeNotFoundException e) {
+                    System.out.printf("Сотрудника с id: %d не существует!\n", id);
+                }
             }
             if (this == GROUP_BY_NAME) {
                 System.out.println(service.groupByName());;
