@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+/*
+ * Задание 1.
+ */
+
 @Entity
 @Table(name = "employee")
 public class Employee {

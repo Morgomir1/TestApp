@@ -7,6 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Задание 2.
+ */
+
 public class EmployeeService {
 
     private Connection connection;
@@ -29,6 +33,10 @@ public class EmployeeService {
         return connection.createStatement().executeQuery(request);
     }
 
+    /*
+     * Задание 2.1.
+     */
+
     public Employee findById(int id) {
         try {
             ResultSet set = executeQuery("SELECT * FROM testapp.employee where id=" + id);
@@ -39,6 +47,10 @@ public class EmployeeService {
         }
         return null;
     }
+
+    /*
+     * Задание 2.2.
+     */
 
     public List<String> groupByName() {
         try {
@@ -53,6 +65,10 @@ public class EmployeeService {
         }
         return null;
     }
+
+    /*
+     * Задание 2.3.
+     */
 
     public List<Employee> findBetween(LocalDate min, LocalDate max) {
         try {

@@ -3,6 +3,7 @@ package testapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import testapp.config.DatabaseLoader;
+import testapp.entity.Employee;
 import testapp.service.EmployeeService;
 
 import java.sql.SQLException;
@@ -78,7 +79,8 @@ public class Application {
                     System.out.println("Нужно ввести число > 1!");
                     return true;
                 }
-                System.out.println(service.findById(id));;
+                Employee employee = service.findById(id);
+                System.out.println(employee == null ? "Сотрудника с таким id не существует!" : employee);;
             }
             if (this == GROUP_BY_NAME) {
                 System.out.println(service.groupByName());;
