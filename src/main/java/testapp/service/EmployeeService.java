@@ -1,6 +1,7 @@
 package testapp.service;
 
 import testapp.entity.Employee;
+import testapp.exception.EmployeeNotFoundException;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -36,16 +37,18 @@ public class EmployeeService {
     /*
      * Задание 2.1.
      */
-
     public Employee findById(int id) {
         try {
             ResultSet set = executeQuery("SELECT * FROM testapp.employee where id=" + id);
-            if (set.next())
-            return new Employee(set);
+            if (set.next()) {
+                return new Employee(set);
+            } else {
+                throw new EmployeeNotFoundException(id);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        throw new EmployeeNotFoundException(id);
     }
 
     /*
