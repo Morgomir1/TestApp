@@ -12,18 +12,12 @@ import java.time.LocalDateTime;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column
     private String name;
-    @Column
     private String surname;
-    @Column
     private LocalDate birthDate;
-    @Column
     private String department;
-    @Column
     private int salary;
 
     public Employee() {
